@@ -44,6 +44,7 @@ trait IPrint {
 // bind & impl `IPrint`
 impl IPrint for Emoji<u32> {
 	// get unicode-char
+	// @param number type of u32
 	fn get_unicode_char(number: u32) -> char {
 		unsafe { char::from_u32_unchecked(number) }
 	}
@@ -56,12 +57,12 @@ impl IPrint for Emoji<u32> {
 
 		let mut i = start;
 
-		// condition: i < end
+		// condition: i <= end
 		while i <= end {
 			let console = Self::get_unicode_char(i);
 			print!("{} ", console);
 
-			// new line: 
+			// new line:
 			// (the status of the lower 4 bits are all 1, need wrap!)
 			if (i & NEXT_LINE_MASK) == NEXT_LINE_MASK {
 				println!("{}", EMPTY_STR);
@@ -74,6 +75,9 @@ impl IPrint for Emoji<u32> {
 
 // main-method
 fn main() {
-	let emoji = Emoji { start: TABLE_START, end: TABLE_END };
+	let emoji = Emoji {
+		start: TABLE_START,
+		end: TABLE_END,
+	};
 	emoji.print();
 }
