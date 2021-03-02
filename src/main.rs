@@ -23,7 +23,7 @@ const NEXT_LINE_MASK: u32 = 0x0f;
 
 // defined struct of `emoji`
 #[derive(Debug)]
-struct Emoji<T> {
+pub struct Emoji<T> {
 	// start position
 	start: T,
 	// end position
@@ -31,7 +31,7 @@ struct Emoji<T> {
 }
 
 // defined interface of `IPrint`
-trait IPrint {
+pub trait IPrint {
 	// get unicode-char
 	// @param number type of u32
 	fn get_unicode_char(number: u32) -> char;
