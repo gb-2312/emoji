@@ -54,11 +54,11 @@ impl IPrint for Emoji<u32> {
 	// bind & print emoji
 	// @param emoji => pointer of `emoji`
 	fn print(&self) {
-		let mut string_builder = String::new();
 		let start = self.start;
 		let end = self.end;
 
 		let mut i = start;
+		let mut string_builder = String::new();
 
 		// condition: i <= end
 		while i <= end {
